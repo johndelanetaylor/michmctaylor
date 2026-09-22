@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import Marquee from '../components/Marquee.astro';
+import Highlight from '../components/Highlight.astro';
+import { SITE, url } from '../lib/site';
+import headshot from '../assets/home/headshot.jpg';
+---
+
+<BaseLayout>
+  <section class="hero wrap">
+    <h1>
+      <Highlight>michelle m. taylor</Highlight> is a graphic designer specializing in
+      <Highlight kind="circle" delay={0.9}>print</Highlight> and <Highlight kind="circle" delay={1.6}>digital</Highlight> design.
+    </h1>
+  </section>
+
+  <Marquee items={['design', 'branding', 'animation', 'illustration', 'collaboration', 'fun']} />
+
+  <section class="section wrap">
+    <div class="grid grid--2 skills">
+      <div>
+        <p class="eyebrow">marketing</p>
+        <ul role="list">
+          <li>Brand development</li><li>Merchandising</li><li>Copywriting</li><li>360 campaigns</li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">design</p>
+        <ul role="list">
+          <li>Branding</li><li>Typography</li><li>Illustration</li><li>Motion graphics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="work">
+    <div class="section-head">
+      <h2>let's get into it</h2>
+      <a href={url("/work/")} class="btn">all work</a>
+    </div>
+    <ProjectGrid featured />
+  </section>
+
+  <section class="section wrap bio">
+    <div class="grid grid--2 bio__grid">
+      <div class="bio__img">
+        <Image src={headshot} alt="Michelle M. Taylor smiling in front of a weathered wood fence" widths={[480, 800, 1200]} sizes="(min-width: 900px) 40vw, 100vw" />
+      </div>
+      <div class="stack">
+        <h2>✌︎ hi, hello, how are ya</h2>
+        <p>With over 10 years of experience as a graphic designer, I specialize in creating and expanding the visual identities of CPG brands. I have a strong background as an in-house designer and freelancer working with a variety of clients in print and digital design.</p>
+        <p>I am passionate about telling the stories of the brands I work with, using creative ideation, brand development, and content creation skills. I am also developing my skills in motion graphics, to further enhance my digital storytelling skillset and create engaging and dynamic content for online platforms. My goal is to deliver high-quality and impactful design solutions that reflect the values and vision of the brands I work with.</p>
+        <p class="bio__social">
+          Find me on:
+          <a href={SITE.social.instagram} rel="me noopener" target="_blank">☺︎ Instagram</a>
+          <a href={SITE.social.linkedin} rel="me noopener" target="_blank">☞ LinkedIn</a>
+          <a href={SITE.social.dribbble} rel="me noopener" target="_blank">✎ Dribbble</a>
+        </p>
+        <p>
+          <a class="btn btn--accent" href={`mailto:${SITE.email}`}>let's work together</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding-block: clamp(3rem, 10vw, 7rem); }
+  .hero h1 { max-width: 22ch; margin: 0; line-height: 1.15; }
+  .skills ul { font-size: var(--fs-3); font-family: var(--f-display); text-transform: lowercase; line-height: 1.3; }
+  .skills .eyebrow { margin-bottom: 0.75rem; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .section-head h2 { margin: 0; }
+  .bio__grid { align-items: center; }
+  .bio__img img { width: 100%; height: auto; border-radius: var(--radius); }
+  .bio__social { display: flex; flex-wrap: wrap; gap: 1rem; }
+</style>

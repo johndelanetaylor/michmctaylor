@@ -1,0 +1,43 @@
+---
+import { SITE, url } from '../lib/site';
+import Marquee from './Marquee.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__cta">
+    <a class="btn" href={`mailto:${SITE.email}`}>get in touch</a>
+  </div>
+  <Marquee class="marquee--plain marquee--tilt marquee--sm" sep="☺︎" items={["let's work together", `copyright © michelle m. taylor, llc ${year}`]} />
+  <div class="footer__bar">
+    <div class="wrap footer__bar-in">
+      <a class="footer__brand" href={url("/")}>{SITE.short}</a>
+      <nav aria-label="Footer">
+        <ul role="list">
+          {SITE.nav.map(({ href, label }) => <li><a href={url(href)}>{label}</a></li>)}
+        </ul>
+      </nav>
+      <ul role="list" class="footer__social">
+        <li><a href={SITE.social.instagram} rel="me noopener" target="_blank">☺︎ Instagram</a></li>
+        <li><a href={SITE.social.linkedin} rel="me noopener" target="_blank">☞ LinkedIn</a></li>
+        <li><a href={SITE.social.dribbble} rel="me noopener" target="_blank">✎ Dribbble</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { margin-top: clamp(3rem, 8vw, 6rem); overflow: hidden; }
+  .footer__cta { text-align: center; padding-block: clamp(2rem, 5vw, 4rem) 1rem; }
+  .footer__cta .btn { text-transform: uppercase; font-family: var(--f-body); font-weight: 600; letter-spacing: 0.08em; font-size: var(--fs-s); border-radius: var(--radius); }
+  .footer :global(.marquee--tilt) { margin-block: 2rem 4rem; }
+  .footer__bar { background: #111; color: #fff; padding-block: 2rem; }
+  .footer__bar-in { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 3rem; }
+  .footer__brand { font-family: var(--f-display); font-size: 1.5rem; text-decoration: none; color: #fff; }
+  .footer__bar nav ul { display: flex; gap: 2rem; }
+  .footer__bar nav a { font-family: var(--f-display); text-transform: uppercase; font-size: var(--fs-s); letter-spacing: 0.08em; text-decoration: none; color: #fff; }
+  .footer__social { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-left: auto; }
+  .footer__social a { text-decoration: none; color: #fff; font-size: var(--fs-s); }
+  .footer__bar a:hover { color: var(--c-accent-2); }
+  @media (max-width: 640px) { .footer__social { margin-left: 0; } }
+</style>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/site';
+---
+
+<BaseLayout title="Contact" description="Get in touch with Michelle M. Taylor for branding, packaging, and motion design work.">
+  <section class="section wrap">
+    <h1>let's chat</h1>
+    <p class="lede">Email me directly ➼ <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    <p><a class="btn btn--accent" href={`mailto:${SITE.email}?subject=Hi%20Michelle`}>send an email</a></p>
+    <p class="social">
+      Find me on:
+      <a href={SITE.social.instagram} rel="me noopener" target="_blank">☺︎ Instagram</a>
+      <a href={SITE.social.linkedin} rel="me noopener" target="_blank">☞ LinkedIn</a>
+      <a href={SITE.social.dribbble} rel="me noopener" target="_blank">✎ Dribbble</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .social { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 3rem; }
+</style>

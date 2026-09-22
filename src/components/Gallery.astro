@@ -1,0 +1,42 @@
+---
+// Uniform media grid — every tile shares one aspect ratio so grids stay tidy.
+// items: { src: ImageMetadata, alt }  |  { video: '/video/<project>/name.mp4', alt }
+//   cols    2 | 3 | 4 | 5          (default 3)
+//   ratio   CSS aspect-ratio        (default '1'; e.g. '4/5', '16/9')
+//   fit     'cover' | 'contain'     (default cover; use contain for renders/graphics that must not crop)
+//   caption optional figcaption
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import VideoLoop from './VideoLoop.astro';
+
+type Item = { src: ImageMetadata; alt: string; video?: never } | { video: string; alt: string; src?: never };
+interface Props { images: Item[]; cols?: 2 | 3 | 4 | 5; ratio?: string; fit?: 'cover' | 'contain'; caption?: string }
+const { images, cols = 3, ratio = '1', fit = 'cover', caption } = Astro.props;
+const px = Math.round(1200 / cols);
+---
+
+<figure class:list={['gallery', `gallery--${fit}`]} style={`--cols:${cols};--ratio:${ratio}`}>
+  <ul role="list" class="gallery__grid">
+    {images.map((it) => (
+      <li class="gallery__item">
+        {'video' in it && it.video
+          ? <VideoLoop src={it.video} alt={it.alt} />
+          : <Image src={it.src!} alt={it.alt} widths={[480, 800, 1200]} sizes={`(min-width: 900px) ${px}px, 100vw`} />}
+      </li>
+    ))}
+  </ul>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .gallery { margin: 0; }
+  .gallery__grid { display: grid; gap: 1rem; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
+  @media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(min(var(--cols), 2), minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .gallery__grid { grid-template-columns: 1fr; } }
+  .gallery__item { aspect-ratio: var(--ratio); overflow: hidden; border-radius: var(--radius); background: var(--c-tile); }
+  .gallery__item :global(img), .gallery__item :global(video) { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery--contain .gallery__item :global(img), .gallery--contain .gallery__item :global(video) { object-fit: contain; }
+  .gallery__item :global(figure), .gallery__item :global(.loop__frame) { height: 100%; border-radius: 0; background: transparent; }
+  .gallery__item :global(video) { border-radius: 0; background: transparent; }
+  figcaption { font-size: var(--fs-s); color: var(--c-ink-soft); margin-top: 0.75rem; max-width: var(--measure); }
+</style>

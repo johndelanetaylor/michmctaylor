@@ -1,0 +1,14 @@
+---
+interface Props { items: string[]; sep?: string; class?: string }
+const { items, sep = '&', class: cls } = Astro.props;
+// Duplicate the list so the CSS translateX(-50%) loop is seamless.
+const track = [...items, ...items];
+---
+
+<div class:list={['marquee', cls]} aria-hidden="true" style={`--sep:'${sep}'`}>
+  <div class="marquee__track">{track.map((t) => <span>{t}</span>)}</div>
+</div>
+
+<style>
+  .marquee__track span::after { content: var(--sep); }
+</style>

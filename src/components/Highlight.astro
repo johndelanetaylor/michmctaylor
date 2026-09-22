@@ -1,0 +1,26 @@
+---
+// Marker-style text highlights that draw themselves in on load (port of the Squarespace
+// "wave" underline + "circle" highlights on the homepage h1). Sits behind the text.
+//   <Highlight>michelle m. taylor</Highlight>
+//   <Highlight kind="circle" delay={0.8} duration={2}>print</Highlight>
+interface Props { kind?: 'wave' | 'circle'; delay?: number; duration?: number }
+const { kind = 'wave', delay = 0, duration = kind === 'wave' ? 1 : 2 } = Astro.props;
+const wave = { box: '0 0 100 10', d: 'M1 6 Q 8 1, 15 6 T 29 6 T 43 6 T 57 6 T 71 6 T 85 6 T 99 6' };
+const circle = { box: '0 0 100 40', d: 'M50 3 C 80 2, 99 10, 98 20 C 97 32, 72 38, 48 37 C 22 36, 2 30, 3 19 C 4 8, 28 3, 58 4' };
+const { box, d } = kind === 'wave' ? wave : circle;
+---
+
+{/* no whitespace inside the span — it would widen it and shift the drawing */}
+<span class:list={['hl', `hl--${kind}`]} style={`--delay:${delay}s;--dur:${duration}s`}><slot /><svg viewBox={box} preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d={d} /></svg></span>
+
+<style>
+  .hl { position: relative; z-index: 0; display: inline-block; white-space: nowrap; }
+  .hl svg { position: absolute; z-index: -1; max-width: none; pointer-events: none; fill: none; stroke: var(--c-accent-2); stroke-linecap: round; overflow: visible; }
+  .hl path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw var(--dur) ease-out var(--delay) forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .hl path { animation: none; stroke-dashoffset: 0; } }
+
+  .hl--wave svg { left: 0; bottom: -0.1em; width: 100%; height: 0.3em; stroke-width: 3; }
+  .hl--circle { padding-inline: 0.22em; }
+  .hl--circle svg { top: -0.14em; left: -0.34em; width: calc(100% + 0.68em); height: calc(100% + 0.24em); stroke-width: 2.2; }
+</style>

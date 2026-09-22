@@ -1,0 +1,36 @@
+---
+// Lists projects. Filter by tag, cap count, or pass an explicit list.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+import type { Tag } from '../lib/tags';
+
+interface Props {
+  tag?: Tag;
+  featured?: boolean;
+  limit?: number;
+  exclude?: string; // project id to omit (e.g. current page)
+  projects?: CollectionEntry<'work'>[];
+  compact?: boolean;
+}
+const { tag, featured, limit, exclude, projects, compact } = Astro.props;
+
+let list =
+  projects ??
+  (await getCollection('work', ({ data, id }) => {
+    if (data.draft) return false;
+    if (tag && !data.tags.includes(tag)) return false;
+    if (featured && !data.featured) return false;
+    if (exclude && id === exclude) return false;
+    return true;
+  }));
+list = list.sort((a, b) => a.data.order - b.data.order);
+if (limit) list = list.slice(0, limit);
+---
+
+{list.length ? (
+  <ul role="list" class="grid grid--3">
+    {list.map((p, i) => <li><ProjectCard project={p} compact={compact} loading={i < 3 ? 'eager' : 'lazy'} /></li>)}
+  </ul>
+) : (
+  <p>Nothing here yet.</p>
+)}

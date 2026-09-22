@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://michmctaylor.com/sitemap-index.xml

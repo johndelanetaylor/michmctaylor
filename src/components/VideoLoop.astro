@@ -1,0 +1,41 @@
+---
+// Short muted autoplay loop (the GIF replacement) — or, with `controls`, a normal player.
+// Files live in public/video/<project>/name.{mp4,webm,jpg}; pass the .mp4 path, the rest is inferred.
+interface Props { src: string; alt: string; caption?: string; controls?: boolean; ratio?: string; fit?: 'cover' | 'contain'; class?: string }
+import { url } from '../lib/site';
+const { src, alt, caption, controls = false, ratio, fit = 'cover', class: cls } = Astro.props;
+const base = url(src.replace(/\.mp4$/, ''));
+---
+
+<figure class:list={['loop', `loop--${fit}`, cls]} style={ratio ? `--ratio:${ratio}` : undefined}>
+  <div class="loop__frame">
+  <video
+    aria-label={alt}
+    poster={`${base}.jpg`}
+    playsinline
+    preload={controls ? 'none' : 'metadata'}
+    {...(controls ? { controls: true } : { autoplay: true, muted: true, loop: true, 'data-loop': true })}
+  >
+    {!controls && <source src={`${base}.webm`} type="video/webm" />}
+    <source src={`${base}.mp4`} type="video/mp4" />
+  </video>
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .loop { margin: 0; }
+  .loop__frame { aspect-ratio: var(--ratio, auto); overflow: hidden; border-radius: var(--radius); background: var(--c-tile); }
+  video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .loop--contain video { object-fit: contain; }
+  figcaption { font-size: var(--fs-s); color: var(--c-ink-soft); margin-top: 0.75rem; max-width: var(--measure); }
+</style>
+
+<script>
+  // Respect reduced-motion: don't autoplay loops, show the poster + native controls instead.
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLVideoElement>('video[data-loop]').forEach((v) => {
+      v.removeAttribute('autoplay'); v.pause(); v.controls = true;
+    });
+  }
+</script>

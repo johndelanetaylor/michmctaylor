@@ -1,0 +1,56 @@
+---
+// Single layout for every page: <head>, nav, footer. Pass title/description per page.
+import '@fontsource/archivo-black';
+import '@fontsource-variable/archivo';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE, url } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string; // absolute or site-relative
+}
+const { title, description = SITE.description, ogImage = '/og-default.jpg' } = Astro.props;
+const fullTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} | Graphic Designer: Print & Digital Design`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const og = new URL(ogImage.startsWith('/') && !ogImage.startsWith(import.meta.env.BASE_URL) ? url(ogImage) : ogImage, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.name} — Blog`} href={url("/rss.xml")} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#fbfaf7" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute; left: 1rem; top: -100px;
+    background: var(--c-ink); color: var(--c-bg); padding: 0.5rem 1rem; z-index: 100;
+  }
+  .skip:focus { top: 1rem; }
+</style>
