@@ -7,7 +7,9 @@ permissions:
   contents: read
   pages: write
   id-token: write
-concurrency: { group: pages, cancel-in-progress: true }
+concurrency:
+  group: pages
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,13 +19,16 @@ jobs:
         with:
           node-version: 22
         env:
-          # Temporary github.io preview. At launch: delete these two lines and restore public/CNAME (see docs/CNAME.on-launch).
-          SITE: https://johndelanetaylor.github.io
+          # Temporary preview under John's Pages domain. At launch: delete these two
+          # lines and restore public/CNAME (see docs/CNAME.on-launch).
+          SITE: https://johndelanetaylor.com
           BASE: /michmctaylor
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment: { name: github-pages, url: ${{ steps.deployment.outputs.page_url }} }
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
