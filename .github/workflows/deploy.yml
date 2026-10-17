@@ -18,11 +18,6 @@ jobs:
       - uses: withastro/action@v3
         with:
           node-version: 22
-        env:
-          # Temporary preview under John's Pages domain. At launch: delete these two
-          # lines and restore public/CNAME (see docs/CNAME.on-launch).
-          SITE: https://johndelanetaylor.com
-          BASE: /michmctaylor
   deploy:
     needs: build
     runs-on: ubuntu-latest

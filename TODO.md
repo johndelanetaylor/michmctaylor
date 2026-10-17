@@ -68,7 +68,7 @@ Use `node scripts/outline.mjs work__<slug>` + `raw/_shots/<slug>.png` as the sou
 - [ ] Redirects verified: `/home`, `/cart` (all 8 work slugs unchanged → no redirects needed)
 - [ ] Search Console: add property, submit sitemap post-launch
 - [x] Repo: `johndelanetaylor/michmctaylor` (public) — transfer to Michelle's account later if desired
-- [ ] **Launch-day flip**: in `.github/workflows/deploy.yml` delete the `SITE`/`BASE` env lines; `mv docs/CNAME.on-launch public/CNAME`; push. Then DNS.
+- [x] **Launch flip** 2026-10-17: `public/CNAME` restored, preview `SITE`/`BASE` env removed from workflow
 - [ ] DNS in Squarespace → GH Pages; HTTPS enforced
 - [ ] Squarespace kept 2–4 wks then cancelled (after domain transfer)
 
