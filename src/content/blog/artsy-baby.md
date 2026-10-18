@@ -11,7 +11,7 @@ Full disclosure alert: this post contains affiliate links which may generate a c
 
  
 
-### baby must-haves
+## baby must-haves
 
 You'll find a mix of must-haves and must-wants here, but trust me, you'll want them all.
 
@@ -22,14 +22,14 @@ You'll find a mix of must-haves and must-wants here, but trust me, you'll want t
 - Babies Moon Salve from Fat & The Moon: use [this link](http://rwrd.io/jkuiwtc?c) for $15 off your first order
 - The best swaddle: [Love to Dream](https://www.amazon.com/Love-Dream-Dramatically-Preferred-self-Soothing/dp/B0081GJ038/ref=sr_1_5?_encoding=UTF8&camp=1789&creative=9325&crid=2RXGTAPPJW2ZU&keywords=love%252Bto%252Bdream%252Bswaddle%252Bup&linkCode=ur2&linkId=89347bd7d94ca2cc6e060d25a0999be4&qid=1694555309&sprefix=love%252Bto%252Bdream%252Bswaddle%252Bup%252Caps%252C144&sr=8-5&tag=michmctaylor-20&th=1) arms up swaddle
 
-### toys
+## toys
 
 Aesthetic vibes, good quality, and non-bank-breaking. 
 
 - [Mushie stacking cups](https://www.amazon.com/mushie-Stacking-Cups-Denmark-Petal/dp/B08LT71FY2/?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&linkId=34e92561a25c53c99786ae354ba1c98f&tag=michmctaylor-20)
 - [Mushie rainbow stacker](https://www.amazon.com/mushie-Rainbow-Stacker-Denmark-Tropical/dp/B09PT7W8MC?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&linkId=08143d8c747c8e7e34139851a89c711c&tag=michmctaylor-20)
 
-### books
+## books
 
 Explore a world of colors and creativity with these aesthetic books. 
 
@@ -41,7 +41,7 @@ Explore a world of colors and creativity with these aesthetic books.
 - [The ABCs of Art](https://www.amazon.com/ABCs-Art-Sabrina-Hahn/dp/1510749381?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&linkId=6ff719f1bef291e9616d5f695a9d13da&tag=michmctaylor-20) board book
 - [Tomorrow I’ll Be Brave](https://www.amazon.com/dp/1524787019?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&linkId=10993c843a532e612d5fa1e7a6ec6e7f&psc=1&tag=babyli-20&tag=michmctaylor-20&th=1) and [Tomorrow I’ll Be Kind](https://www.amazon.com/dp/1524787043?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&linkId=f0af1bdf8ce62d42543aa13a00f78490&psc=1&tag=babyli-20&tag=michmctaylor-20&th=1) written and illustrated by graphic designer Jessica Hische
 
-### clothes
+## clothes
 
 - [Primary.com](https://www.primary.com/a/refer-a-friend/redeem/dbkgrwciztcadmf2cteqozcf86nyhhx1ey8ugg8w/7907) - use my link for 25% off your first order + a year of free shipping
 - Honest Co basic rainbow-hued [onesies](https://www.amazon.com/dp/B09Q7P3YKX/ref=twister_B08SY9LTCJ?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&linkId=1f1635eadee7f23f722d91e67993c21c&tag=michmctaylor-20) and [tees](https://www.amazon.com/HonestBaby-Organic-Toddler-T-Shirt-Multi-Pack/dp/B09QTBPVFK/ref=sr_1_2?_encoding=UTF8&camp=1789&creative=9325&crid=25KUKZ2DY956B&keywords=honest%252Bco%252Btshirt&linkCode=ur2&linkId=614864204f372728edcb1a9638754278&qid=1694553750&sprefix=honest%252Bco%252Btshirt%252B%252Caps%252C130&sr=8-2&tag=michmctaylor-20&th=1)

@@ -13,14 +13,14 @@ Full disclosure alert: this post contains affiliate links which may generate a c
 
  
 
-### huge selection of resources
+## huge selection of resources
 
 Find exactly what you need from these curated and high quality sites with resources from 3D digital mockups, vector illustrations, typefaces and more. 
 
 - [Yellow Images](https://yellowimages.com?yi=407389) - food and beverage DTC packaging like bottles, cans, boxes, glasses, environmental mockups and sooo many other things! They are super realistic and high resolution that function in Photoshop by placing your art into a linked .psb that applies your art into the mockup pretty seamlessly. The individual PSD mockups are very affordable and they also offer an annual membership.
 - [Creative Market](https://www.tkqlhce.com/click-100990962-15136940) - if you need some quick templates for a client, extra illustration assets that aren’t in your wheelhouse, inspo from using a new brush or textures, or if you want to access to new and unique typefaces – Creative Market is your ticket. There’s so much to be found here and you’re supporting other designers and artists by buying here!
 
-### so many mockups
+## so many mockups
 
 A short list of my favorites from [Yellow Images](https://yellowimages.com?yi=407389). Some of these I commissioned to be made from real life packaging I was designing or working with, which is such an awesome option to have if you need something super specific!
 
@@ -36,24 +36,24 @@ Some free faves
 - Great flat lay wearables from [graphicheroco on Freepic](https://www.freepik.com/search?author=14845499&authorSlug=graphicheroco&format=author&page=6&sort=recent)
 - Devices, posters, and more [LS Graphics](https://www.ls.graphics/free-mockups)
 
-### Photography resources
+## Photography resources
 
 - Images, high quality, free-to-use: [Unsplash](https://unsplash.com/explore)
 
-### design resources
+## design resources
 
 - Icons, free for personal use: [The Noun Project](https://thenounproject.com/icons/)
 
-### typography resources
+## typography resources
 
 - [Lost Type Co](https://www.losttype.com)
 - [Jessica Hische](https://jessicahische.shop/collections/fonts)
 
-### procreate resources
+## procreate resources
 
 - Free (and purchasable) brushes, grids, guides, and learning resources from [Molly Suber Thorpe](https://mollysuberthorpe.com)
 - Texture packs, brushes (some free!), and tutorials from [True Grit Texture Supply](https://www.truegrittexturesupply.com/pages/free-procreate-photoshop-brushes)
 
-### continued learning
+## continued learning
 
 - [Skillshare](https://share.skillshare.com/michmctaylor) - level up your design skills with easy-to-digest classes by renowned designers and creators. The classes are broken up into short videos so they’re easy to fit into a busy lifestyle (looking at you, fellow toddler moms). I’ve been using Skillshare to grow my skills in motion graphics with Adobe After Effects and Adobe Animate. Youtube is also a great (and free!) resource but I love the structure and community Skillshare adds to learning.

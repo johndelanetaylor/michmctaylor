@@ -11,8 +11,10 @@ interface Props {
   exclude?: string; // project id to omit (e.g. current page)
   projects?: CollectionEntry<'work'>[];
   compact?: boolean;
+  /** Heading level for card titles — h3 when the grid sits under an h2. */
+  as?: 'h2' | 'h3';
 }
-const { tag, featured, limit, exclude, projects, compact } = Astro.props;
+const { tag, featured, limit, exclude, projects, compact, as = 'h2' } = Astro.props;
 
 let list =
   projects ??
@@ -29,7 +31,7 @@ if (limit) list = list.slice(0, limit);
 
 {list.length ? (
   <ul role="list" class="grid grid--3">
-    {list.map((p, i) => <li><ProjectCard project={p} compact={compact} loading={i < 3 ? 'eager' : 'lazy'} /></li>)}
+    {list.map((p, i) => <li><ProjectCard project={p} compact={compact} as={as} loading={i < 3 ? 'eager' : 'lazy'} /></li>)}
   </ul>
 ) : (
   <p>Nothing here yet.</p>

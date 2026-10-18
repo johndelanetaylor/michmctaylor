@@ -32,7 +32,8 @@ const base = url(src.replace(/\.mp4$/, ''));
 </style>
 
 <script>
-  // Respect reduced-motion: don't autoplay loops, show the poster + native controls instead.
+  // Reduced motion: never autoplay. Show the poster and give the viewer native controls.
+  // (The global Pause motion button covers everyone else — see MotionToggle.astro.)
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll<HTMLVideoElement>('video[data-loop]').forEach((v) => {
       v.removeAttribute('autoplay'); v.pause(); v.controls = true;

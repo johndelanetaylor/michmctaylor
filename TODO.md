@@ -44,18 +44,22 @@ Use `node scripts/outline.mjs work__<slug>` + `raw/_shots/<slug>.png` as the sou
 - [ ] OG default image (`public/og-default.jpg`) — currently missing
 - [ ] Favicon: SVG placeholder → real mark
 
-## Accessibility
-- [ ] Color contrast ≥ 4.5:1: body, `--c-ink-soft` on `--c-bg`, accent-on-ink buttons, chips
-- [ ] Alt text on every image (schema enforces `heroAlt`; body images need manual pass — SS alt was filename or empty)
-- [ ] Headings: one h1 per page, no skipped levels (prose h2 → h3)
-- [ ] Focus states visible on links/buttons/chips
-- [ ] Mobile nav: keyboard operable, `aria-expanded`, Esc closes, focus trap not needed
-- [x] `prefers-reduced-motion`: marquee stops, video loops don't autoplay + show controls (VideoLoop script)
-- [ ] Autoplay loops: muted/playsinline ✔; consider a visible pause control (WCAG 2.2.2 for >5s motion)
-- [ ] Vimeo iframe has `title` ✔
-- [ ] Skip link ✔ — verify it targets `#main`
-- [ ] Lighthouse a11y ≥ 95 on home, work, a project, blog post
-- [ ] Screen reader pass: VoiceOver on home + one project
+## Accessibility — PASS (audited 2026-10-18)
+Lighthouse a11y **100** on /, /work/, /work/tag/motion/, /work/funkwerks/, /work/motion-graphics/, /blog/, /blog/portfolio-mockups/, /contact/, /404.
+
+- [x] Contrast: all pairings pass (body 17.65:1, captions 8.49:1, links 4.78:1, chip/toggle borders 3.38:1, focus ring 5.1:1)
+      - added `--c-accent-text` hsl(15 91% 42%) for orange TEXT; bright `--c-accent` now fills only
+      - added `--c-line-strong` for interactive borders (`--c-line` stays for decorative rules)
+- [x] Alt text on every image; card images use empty alt (name comes from the visible title)
+- [x] Heading order: no skipped levels. Card titles h2 in main grids / h3 under an h2; blog `###` → `##`
+- [x] Focus visible on every interactive element (3px indigo ring, verified by tab-through)
+- [x] Mobile nav: `aria-expanded` syncs, Esc closes + returns focus to the toggle, links close the menu
+- [x] WCAG 2.2.2 — loops run 11–18s, so a global **Pause motion** button pauses all loops + marquees; choice persists in localStorage
+- [x] `prefers-reduced-motion`: loops never autoplay (poster + native controls), marquees static, toggle hidden
+- [x] WCAG 2.5.3 Label in Name — brand link's accessible name now contains its visible text ("mmt")
+- [x] WCAG 1.4.10 Reflow — zero horizontal overflow at 320/390/768px (h1 min size lowered; highlights may wrap under 420px)
+- [x] Video `aria-label`, Vimeo iframe `title`, `lang="en"`, skip link → `#main`
+- [ ] Screen reader pass: VoiceOver on home + one project (manual — needs a human)
 
 ## Performance
 - [ ] Lighthouse perf ≥ 90 mobile on motion page after GIF→MP4

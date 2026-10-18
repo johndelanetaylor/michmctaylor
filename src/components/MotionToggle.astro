@@ -1,0 +1,73 @@
+---
+// WCAG 2.2.2: anything that moves, blinks or auto-updates for more than 5s needs a
+// pause mechanism. The marquees and the video loops both qualify, so one control
+// pauses them all. Hidden unless the page actually has motion; choice persists.
+---
+
+<button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" hidden>
+  <span class="motion-toggle__icon" aria-hidden="true"></span>
+  <span class="motion-toggle__label">Pause motion</span>
+</button>
+
+<style>
+  .motion-toggle {
+    position: fixed; right: 1rem; bottom: 1rem; z-index: 60;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.6em 1em;
+    background: var(--c-bg); color: var(--c-ink);
+    border: 1px solid var(--c-line-strong); border-radius: 999px;
+    font-size: var(--fs-s); line-height: 1; cursor: pointer;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.12);
+  }
+  .motion-toggle:hover { background: var(--c-ink); color: var(--c-bg); border-color: var(--c-ink); }
+  .motion-toggle__icon { width: 0.7em; height: 0.8em; border-left: 3px solid currentColor; border-right: 3px solid currentColor; }
+  /* paused state → show a play triangle instead */
+  .motion-toggle[aria-pressed='true'] .motion-toggle__icon {
+    width: 0; height: 0; border: 0;
+    border-top: 0.4em solid transparent; border-bottom: 0.4em solid transparent;
+    border-left: 0.7em solid currentColor;
+  }
+  /* Narrow screens: hide the label visually but keep it as the button's accessible
+     name — display:none would leave the button nameless. */
+  @media (max-width: 480px) {
+    .motion-toggle { padding: 0.7em; }
+    .motion-toggle__label {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+  }
+  @media print { .motion-toggle { display: none; } }
+</style>
+
+<script>
+  const KEY = 'mmt:motion';
+  const root = document.documentElement;
+  const btn = document.getElementById('motion-toggle') as HTMLButtonElement | null;
+  const loops = () => document.querySelectorAll<HTMLVideoElement>('video[data-loop]');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const apply = (paused: boolean) => {
+    root.dataset.motion = paused ? 'paused' : 'playing';
+    btn?.setAttribute('aria-pressed', String(paused));
+    const label = btn?.querySelector('.motion-toggle__label');
+    if (label) label.textContent = paused ? 'Play motion' : 'Pause motion';
+    loops().forEach((v) => {
+      if (paused) v.pause();
+      else v.play().catch(() => {});
+    });
+  };
+
+  // Only offer the control when there is motion to pause.
+  const hasMotion = document.querySelector('.marquee, video[data-loop]') !== null;
+  if (btn && hasMotion && !reduced) {
+    btn.hidden = false;
+    let stored: string | null = null;
+    try { stored = localStorage.getItem(KEY); } catch {}
+    apply(stored === 'paused');
+    btn.addEventListener('click', () => {
+      const paused = root.dataset.motion !== 'paused';
+      apply(paused);
+      try { localStorage.setItem(KEY, paused ? 'paused' : 'playing'); } catch {}
+    });
+  }
+</script>

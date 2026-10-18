@@ -4,8 +4,8 @@ import type { CollectionEntry } from 'astro:content';
 import { tagLabel } from '../lib/tags';
 import { url } from '../lib/site';
 
-interface Props { project: CollectionEntry<'work'>; loading?: 'lazy' | 'eager'; compact?: boolean }
-const { project, loading = 'lazy', compact = false } = Astro.props;
+interface Props { project: CollectionEntry<'work'>; loading?: 'lazy' | 'eager'; compact?: boolean; as?: 'h2' | 'h3' }
+const { project, loading = 'lazy', compact = false, as: Heading = 'h2' } = Astro.props;
 const { title, hero, heroAlt, card, tags } = project.data;
 ---
 
@@ -14,7 +14,7 @@ const { title, hero, heroAlt, card, tags } = project.data;
     <Image src={card ?? hero} alt={card ? '' : heroAlt} width={900} height={900} loading={loading} />
   </div>
   <div class="card__body">
-    <h3 class="card__title">{title}</h3>
+    <Heading class="card__title">{title}</Heading>
     {!compact && <p class="card__meta">{tags.map(tagLabel).join(' · ')}</p>}
   </div>
 </a>
@@ -26,7 +26,7 @@ const { title, hero, heroAlt, card, tags } = project.data;
   .card:hover .card__media img { transform: scale(1.03); }
   .card__body { padding-top: 0.75rem; }
   .card__title { font-size: var(--fs-3); margin: 0; }
-  .card:hover .card__title { color: var(--c-accent); }
+  .card:hover .card__title { color: var(--c-accent-text); }
   .card__meta { font-size: var(--fs-s); color: var(--c-ink-soft); margin: 0.25rem 0 0; }
 
   /* compact: image only, title slides in on hover/focus */

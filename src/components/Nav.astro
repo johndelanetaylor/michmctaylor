@@ -6,7 +6,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="nav__brand" href={url("/")} aria-label={`${SITE.name} — home`}>{SITE.short}</a>
+    <a class="nav__brand" href={url("/")}>{SITE.short}<span class="sr-only"> — {SITE.name}, home</span></a>
     <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
       <span class="sr-only">Menu</span>
       <span class="nav__bars" aria-hidden="true"></span>
@@ -27,7 +27,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   .nav__brand { font-family: var(--f-display); font-size: 1.5rem; text-decoration: none; }
   .nav__menu ul { display: flex; gap: clamp(1rem, 3vw, 2.5rem); }
   .nav__menu a { font-family: var(--f-display); text-transform: lowercase; text-decoration: none; font-size: 1.05rem; }
-  .nav__menu a[aria-current='page'] { color: var(--c-accent); }
+  .nav__menu a[aria-current='page'] { color: var(--c-accent-text); }
   .nav__toggle { display: none; background: none; border: 0; padding: 0.5rem; cursor: pointer; }
   .nav__bars, .nav__bars::before, .nav__bars::after { display: block; width: 24px; height: 2px; background: var(--c-ink); content: ''; transition: transform 0.2s; }
   .nav__bars { position: relative; }
@@ -44,11 +44,16 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 </style>
 
 <script>
-  // The one script on the site: mobile nav toggle.
   const btn = document.querySelector<HTMLButtonElement>('.nav__toggle');
   const menu = document.getElementById('nav-menu');
-  btn?.addEventListener('click', () => {
-    const open = menu?.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', String(!!open));
+  const setOpen = (open: boolean) => {
+    menu?.classList.toggle('is-open', open);
+    btn?.setAttribute('aria-expanded', String(open));
+  };
+  btn?.addEventListener('click', () => setOpen(!menu?.classList.contains('is-open')));
+  // Esc closes and returns focus to the toggle; clicking a link closes too.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu?.classList.contains('is-open')) { setOpen(false); btn?.focus(); }
   });
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 </script>

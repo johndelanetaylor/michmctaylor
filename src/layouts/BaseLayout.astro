@@ -5,6 +5,7 @@ import '@fontsource-variable/archivo';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import MotionToggle from '../components/MotionToggle.astro';
 import { SITE, url } from '../lib/site';
 
 interface Props {
@@ -44,6 +45,7 @@ const og = new URL(ogImage.startsWith('/') && !ogImage.startsWith(import.meta.en
       <slot />
     </main>
     <Footer />
+    <MotionToggle />
   </body>
 </html>
 

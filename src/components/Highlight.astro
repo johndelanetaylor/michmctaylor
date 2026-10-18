@@ -14,7 +14,8 @@ const { box, d } = kind === 'wave' ? wave : circle;
 <span class:list={['hl', `hl--${kind}`]} style={`--delay:${delay}s;--dur:${duration}s`}><slot /><svg viewBox={box} preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d={d} /></svg></span>
 
 <style>
-  .hl { position: relative; z-index: 0; display: inline-block; white-space: nowrap; }
+  .hl { position: relative; z-index: 0; display: inline-block; white-space: nowrap; max-width: 100%; }
+  @media (max-width: 420px) { .hl { white-space: normal; } }
   .hl svg { position: absolute; z-index: -1; max-width: none; pointer-events: none; fill: none; stroke: var(--c-accent-2); stroke-linecap: round; overflow: visible; }
   .hl path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw var(--dur) ease-out var(--delay) forwards; }
   @keyframes draw { to { stroke-dashoffset: 0; } }
